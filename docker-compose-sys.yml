@@ -41,3 +41,15 @@ services:
     logging:
       options:
         max-size: "10m"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: sys_watchtower
+    restart: always
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    logging:
+      options:
+        max-size: "10m"
