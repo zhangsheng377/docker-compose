@@ -51,10 +51,6 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/nfs/zsd_server/docker/data/mosquitto:/mosquitto
-      - /mnt/nfs/zsd_server/docker/data/mosquitto/config:/mosquitto/config
-      - /mnt/nfs/zsd_server/docker/data/mosquitto/data:/mosquitto/data
-      - /mnt/nfs/zsd_server/docker/data/mosquitto/log:/mosquitto/log
     ports:
       - 1883:1883
       - 9001:9001
