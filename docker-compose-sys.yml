@@ -22,19 +22,22 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - /mnt/nfs/zsd_server/docker/data/mongo:/data
+      - /mnt/nfs/zsd_server/docker/data/mongo/db:/data/db
+      - /mnt/nfs/zsd_server/docker/data/mongo/configdb:/data/configdb
     ports:
       - "27017:27017"
     logging:
       options:
         max-size: "10m"
-  
-  rabbit:
+
+  rabbitmq:
     image: rabbitmq:3.9-management
     container_name: sys_rabbitmq
     restart: always
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+      - /mnt/nfs/zsd_server/docker/data/rabbitmq:/var/lib/rabbitmq
     ports:
       - "5672:5672"
       - "15672:15672"
