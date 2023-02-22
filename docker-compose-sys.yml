@@ -31,7 +31,7 @@ services:
         max-size: "10m"
 
   rabbitmq:
-    image: rabbitmq:3.9-management
+    image: rabbitmq:3.11-management
     container_name: sys_rabbitmq
     restart: always
     volumes:
