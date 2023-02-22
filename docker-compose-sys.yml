@@ -37,7 +37,6 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/nfs/zsd_server/docker/data/rabbitmq:/var/lib/rabbitmq
     ports:
       - "5672:5672"
       - "15672:15672"
