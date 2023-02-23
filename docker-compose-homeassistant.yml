@@ -5,6 +5,7 @@ services:
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
       - /mnt/nfs/zsd_server/docker/data/homeassistant/config:/config
+      - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
     privileged: true
