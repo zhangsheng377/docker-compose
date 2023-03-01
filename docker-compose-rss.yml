@@ -1,0 +1,80 @@
+version: '3'
+
+services:
+    rsshub:
+        # two ways to enable puppeteer:
+        # * comment out marked lines, then use this image instead: diygod/rsshub:chromium-bundled
+        # * (consumes more disk space and memory) leave everything unchanged
+        image: diygod/rsshub
+        restart: always
+        ports:
+            - '1200:1200'
+        environment:
+            NODE_ENV: production
+            CACHE_TYPE: redis
+            REDIS_URL: 'redis://192.168.10.5:6379/'
+            PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'  # marked
+        depends_on:
+            - browserless  # marked
+        volumes:
+          - /etc/timezone:/etc/timezone:ro
+          - /etc/localtime:/etc/localtime:ro
+        logging:
+          options:
+            max-size: "10m"
+
+    browserless:  # marked
+        image: browserless/chrome  # marked
+        restart: always  # marked
+        ulimits:  # marked
+          core:  # marked
+            hard: 0  # marked
+            soft: 0  # marked
+        volumes:
+          - /etc/timezone:/etc/timezone:ro
+          - /etc/localtime:/etc/localtime:ro
+        logging:
+          options:
+            max-size: "10m"
+
+    handle:
+        image: zhangsheng377/check_rss_image:latest
+        container_name: check_rss_handle
+        restart: always
+        volumes:
+          - /etc/timezone:/etc/timezone:ro
+          - /etc/localtime:/etc/localtime:ro
+          - /mnt/nfs/download/bilibili:/mnt/nfs/download/bilibili
+        environment:
+          MONGODB_HOST: '192.168.10.5'
+          MONGODB_PORT: 27017
+          REDIS_HOST: '192.168.10.5'
+          REDIS_PORT: 6379
+        logging:
+          options:
+            max-size: "10m"
+        entrypoint:
+          - /bin/bash
+          - docker_cmd_handle.sh
+
+    server:
+        image: zhangsheng377/check_rss_image:latest
+        container_name: check_rss_server
+        restart: always
+        volumes:
+          - /etc/timezone:/etc/timezone:ro
+          - /etc/localtime:/etc/localtime:ro
+        ports:
+          - "22224:22224"
+        environment:
+          MONGODB_HOST: '192.168.10.5'
+          MONGODB_PORT: 27017
+          REDIS_HOST: '192.168.10.5'
+          REDIS_PORT: 6379
+        logging:
+          options:
+            max-size: "10m"
+        entrypoint:
+          - /bin/bash
+          - docker_cmd_server.sh
+
