@@ -11,8 +11,5 @@ services:
     privileged: true
     network_mode: host
     command: 
-      - /bin/sh
-      - -c
-      - |
-        /config/init.sh
-        /init
+      - /bin/sh /config/init.sh
+      - /init
