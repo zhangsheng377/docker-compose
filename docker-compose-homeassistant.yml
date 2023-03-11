@@ -12,7 +12,7 @@ services:
     network_mode: host
     command: 
       - /bin/sh
-      - c
+      - -c
       - |
         /config/init.sh
         /init
