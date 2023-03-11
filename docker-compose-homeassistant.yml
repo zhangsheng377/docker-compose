@@ -11,5 +11,5 @@ services:
     privileged: true
     network_mode: host
     entrypoint: 
-      - /bin/sh -c "/config/init.sh"
+      - /bin/sh -c '/config/init.sh'
       - /init
