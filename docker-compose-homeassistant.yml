@@ -10,4 +10,8 @@ services:
     restart: unless-stopped
     privileged: true
     network_mode: host
-    entrypoint: bash /config/init.sh && /init
+    entrypoint: 
+      - /bin/sh 
+      - /config/init.sh
+      - |
+        /init
