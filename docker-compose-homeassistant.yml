@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
     privileged: true
     network_mode: host
-    entrypoint: 
+    command: 
       - /bin/sh
       - c
       - |
