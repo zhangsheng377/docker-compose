@@ -23,3 +23,19 @@ services:
     logging:
       options:
         max-size: "10m"
+  
+  emby:
+    image: emby/embyserver
+    ports:
+      - "8096:8096"
+      - "8920:8920"
+    volumes:
+      - /mnt/nfs/zsd_server/docker/data/emby/config:/config
+      - /mnt/nfs/download:/download   # 媒体目录，多个目录需要分别映射进来，需要满足配置文件说明中的要求
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - UID=1000
+      - GID=1000
+      - GIDLIST=1000
+    restart: unless-stopped
