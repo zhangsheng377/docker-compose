@@ -35,9 +35,10 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - UID=1000
-      - GID=1000
-      - GIDLIST=1000
+      - UID=0
+      - GID=0
+#       - GIDLIST=1000
+      - GIDLIST=2
     group_add:
       - "109" # Change this to match your "render" host group id and remove this comment
     devices:
