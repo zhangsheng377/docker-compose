@@ -38,4 +38,9 @@ services:
       - UID=1000
       - GID=1000
       - GIDLIST=1000
+    group_add:
+      - "109" # Change this to match your "render" host group id and remove this comment
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/renderD129:/dev/dri/renderD129
     restart: unless-stopped
