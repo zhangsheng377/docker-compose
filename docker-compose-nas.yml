@@ -41,6 +41,6 @@ services:
     group_add:
       - "109" # Change this to match your "render" host group id and remove this comment
     devices:
-      - /dev/dri/renderD128:/dev/dri/renderD128
-      - /dev/dri/renderD129:/dev/dri/renderD129
+#       - /dev/dri/renderD128:/dev/dri/renderD128  # VMware SVGA II Adapter
+      - /dev/dri/renderD129:/dev/dri/renderD129  # Intel Corporation UHD Graphics 620 (rev 07)
     restart: unless-stopped
