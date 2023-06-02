@@ -46,3 +46,19 @@ services:
 #       - /dev/dri/renderD128:/dev/dri/renderD128  # VMware SVGA II Adapter
       - /dev/dri/renderD129:/dev/dri/renderD129  # Intel Corporation UHD Graphics 620 (rev 07)
     restart: unless-stopped
+    
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - AUTO_UPDATE=true #optional
+      - RUN_OPTS= #optional
+    volumes:
+      - /mnt/nfs/zsd_server/docker/data/jackett/config:/config
+      - /mnt/nfs/download:/download
+    ports:
+      - 9117:9117
+    restart: unless-stopped
