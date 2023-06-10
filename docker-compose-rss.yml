@@ -45,6 +45,7 @@ services:
           - /etc/timezone:/etc/timezone:ro
           - /etc/localtime:/etc/localtime:ro
           - /mnt/nfs/download/bilibili:/mnt/nfs/download/bilibili
+          - /mnt/nfs/download/myrss:/mnt/nfs/download/myrss
         environment:
           MONGODB_HOST: '192.168.10.5'
           MONGODB_PORT: 27017
@@ -64,6 +65,7 @@ services:
         volumes:
           - /etc/timezone:/etc/timezone:ro
           - /etc/localtime:/etc/localtime:ro
+          - /mnt/nfs/download/myrss:/mnt/nfs/download/myrss
         ports:
           - "22224:22224"
         environment:
