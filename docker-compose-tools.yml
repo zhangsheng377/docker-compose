@@ -27,9 +27,9 @@ services:
   ports:
     - "22226:22226"
   environment:
-    - MONGODB_HOST='192.168.10.5'
+    - MONGODB_HOST=192.168.10.5
     - MONGODB_PORT=27017
-    - REDIS_HOST='192.168.10.5'
+    - REDIS_HOST=192.168.10.5
     - REDIS_PORT=6379
     - PORT=22226
     - TZ=Asia/Shanghai
