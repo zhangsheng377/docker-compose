@@ -24,9 +24,6 @@ services:
   image: zhangsheng377/bz_chan_image:latest
   container_name: bz_chan_server
   restart: always
-  volumes:
-    - /etc/timezone:/etc/timezone:ro
-    - /etc/localtime:/etc/localtime:ro
   ports:
     - "22226:22226"
   environment:
@@ -35,6 +32,7 @@ services:
     REDIS_HOST: '192.168.10.5'
     REDIS_PORT: 6379
     PORT: 22226
+    - TZ=Asia/Shanghai 
   logging:
     options:
       max-size: "10m"
