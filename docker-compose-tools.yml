@@ -32,7 +32,7 @@ services:
     REDIS_HOST: '192.168.10.5'
     REDIS_PORT: 6379
     PORT: 22226
-    TZ: 'Asia/Shanghai'
+    - TZ=Asia/Shanghai
   logging:
     options:
       max-size: "10m"
