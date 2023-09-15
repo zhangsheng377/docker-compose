@@ -13,7 +13,7 @@ services:
             NODE_ENV: production
             CACHE_TYPE: redis
             REDIS_URL: 'redis://192.168.10.5:6379/'
-            PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'  # marked
+            PUPPETEER_WS_ENDPOINT: 'ws://192.168.10.5:3000'  # marked
         depends_on:
             - browserless  # marked
         volumes:
