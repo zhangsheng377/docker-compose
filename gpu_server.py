@@ -26,35 +26,36 @@ def hello_world():
 
 def handle_shutdown():
     if sys_flag == "Linux":
-        os.system("shutdown -s -t 0")
+        return os.system("shutdown -t 0")
     else:
-        os.system("shutdown -t 0")
+        return os.system("shutdown -s -t 0")
 
 
 def handle_reboot():
     if sys_flag == "Linux":
-        os.system("reboot")
+        return os.system("reboot")
     else:
-        os.system("shutdown -r -t 0")
+        return os.system("shutdown -r -t 0")
 
 
 def handle_reboot_to_other():
     if sys_flag == "Linux":
-        os.system("reboot_to_windows")
+        return os.system("reboot_to_windows")
     else:
-        handle_reboot()
+        return handle_reboot()
 
 
 @app.route("/<action>.action", methods=['POST', 'GET'])
 def handle(action):
     if action == "shutdown":
-        handle_shutdown()
+        return str(handle_shutdown())
     elif action == "reboot":
-        handle_reboot()
+        return str(handle_reboot())
     elif action == "reboot_to_other":
-        handle_reboot_to_other()
+        return str(handle_reboot_to_other())
     else:
         print(f"handle action:{action} is unknown!")
+        return f"handle action:{action} is unknown!"
     
 
 if __name__ == '__main__':
