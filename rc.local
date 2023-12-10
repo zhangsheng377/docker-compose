@@ -2,4 +2,5 @@
 # https://www.zhangshengdong.com/post/esxi_dms/
 mount -t nfs 192.168.10.36:/volume1/nfs /mnt/nfs
 ethtool -s eno1 wol g
+/home/zsd/miniconda3/bin/python /home/zsd/gpu_server.py &
 exit 0
