@@ -1,0 +1,64 @@
+import json
+import os
+import platform
+import psutil
+from flask import Flask
+from gevent.pywsgi import WSGIServer
+
+sys_flag = platform.system()
+
+app = Flask(__name__)
+
+
+def request_parse(req_data):
+    """解析请求数据并以json形式返回"""
+    if req_data.method == 'POST':
+        return req_data.json
+    elif req_data.method == 'GET':
+        return req_data.args
+    return {}
+
+
+@app.route("/", methods=['POST', 'GET'])
+def hello_world():
+    return "hello_world"
+
+
+def handle_shutdown():
+    if sys_flag == "Linux":
+        os.system("shutdown -s -t 0")
+    else:
+        os.system("shutdown -t 0")
+
+
+def handle_reboot():
+    if sys_flag == "Linux":
+        os.system("reboot")
+    else:
+        os.system("shutdown -r -t 0")
+
+
+def handle_reboot_to_other():
+    if sys_flag == "Linux":
+        os.system("reboot_to_windows")
+    else:
+        handle_reboot()
+
+
+@app.route("/<action>.action", methods=['POST', 'GET'])
+def handle(action):
+    if action == "shutdown":
+        handle_shutdown()
+    elif action == "reboot":
+        handle_reboot()
+    elif action == "reboot_to_other":
+        handle_reboot_to_other()
+    else:
+        print(f"handle action:{action} is unknown!")
+    
+
+if __name__ == '__main__':
+    # app.debug = True
+    http_server = WSGIServer(('0.0.0.0', 28866), app)
+    http_server.serve_forever()
+    # app.run(host="0.0.0.0", debug=True)
