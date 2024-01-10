@@ -15,7 +15,7 @@ services:
         max-size: "10m"
 
   mongo:
-    image: mongo:latest
+    image: mongo:6
     container_name: sys_mongo
     restart: always
     volumes:
