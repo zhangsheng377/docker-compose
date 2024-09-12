@@ -40,6 +40,11 @@ def handle_reboot():
 
 def handle_reboot_to_other():
     if sys_flag == "Linux":
+        """
+        # /usr/local/bin/reboot_to_windows
+        sudo -S grub-reboot 4
+        sudo -S reboot
+        """
         return os.system("reboot_to_windows")
     else:
         return handle_reboot()
