@@ -71,3 +71,21 @@ services:
     logging:
       options:
         max-size: "10m"
+
+  v2raya:
+    image: mzz2017/v2raya
+    container_name: v2raya
+    restart: always
+    privileged: true
+    network_mode: host # --network host
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/nfs/zsd_server/docker/data/v2raya:/etc/v2raya
+    ports:
+      - "2017:2017"
+      - "7890:7890"
+      - "53:53"
+    logging:
+      options:
+        max-size: "10m"
