@@ -7,7 +7,7 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/nfs/zsd_server/docker/data/redis:/data
+      - /mnt/smb_fn/zsd_server/docker/data/redis:/data
     ports:
       - "6379:6379"
     logging:
@@ -21,9 +21,9 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/nfs/zsd_server/docker/data/mongo:/data
-      - /mnt/nfs/zsd_server/docker/data/mongo/db:/data/db
-      - /mnt/nfs/zsd_server/docker/data/mongo/configdb:/data/configdb
+      - /mnt/smb_fn/zsd_server/docker/data/mongo:/data
+      - /mnt/smb_fn/zsd_server/docker/data/mongo/db:/data/db
+      - /mnt/smb_fn/zsd_server/docker/data/mongo/configdb:/data/configdb
     ports:
       - "27017:27017"
     logging:
@@ -37,8 +37,8 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/nfs/zsd_server/docker/data/rabbitmq:/var/lib/rabbitmq
-      - /mnt/nfs/zsd_server/docker/data/rabbitmq/conf.d:/etc/rabbitmq/conf.d
+      - /mnt/smb_fn/zsd_server/docker/data/rabbitmq:/var/lib/rabbitmq
+      - /mnt/smb_fn/zsd_server/docker/data/rabbitmq/conf.d:/etc/rabbitmq/conf.d
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -81,7 +81,7 @@ services:
   #   volumes:
   #     - /etc/timezone:/etc/timezone:ro
   #     - /etc/localtime:/etc/localtime:ro
-  #     - /mnt/nfs/zsd_server/docker/data/v2raya:/etc/v2raya
+  #     - /mnt/smb_fn/zsd_server/docker/data/v2raya:/etc/v2raya
   #   ports:
   #     - "2017:2017"
   #     - "7890:7890"
