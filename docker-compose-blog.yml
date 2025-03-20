@@ -6,42 +6,36 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - /mnt/nfs/zsd_server/docker/data/blog/wordpress_data:/var/www/html
+      - /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data:/var/www/html
     ports:
       - 80:80
     logging:
       options:
         max-size: "10m"
-		
-		
-		    
-			
 
 
 
 
 
+# sudo mkdir /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/
+# sudo mkdir /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/plugins
+# sudo cp -r /home/zsd/sqlite-database-integration /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/plugins/
+# sudo cp /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/plugins/sqlite-database-integration/db.copy /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/db.php
+# sudo sed -i "s+{SQLITE_IMPLEMENTATION_FOLDER_PATH}+/var/www/html/wp-content/plugins/sqlite-database-integration+g" /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/db.php
+# sudo sed -i "s+{SQLITE_PLUGIN}+sqlite-database-integration/load.php+g" /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/db.php
+# sudo mkdir /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/database
+# sudo touch /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/database/.ht.sqlite
+# sudo chown -R www-data:www-data /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/database
+# sudo chmod -R 644 /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/database
+# sudo chmod 766 /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/database
+# sudo echo 'DENY FROM ALL' | sudo tee /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-content/database/.htaccess > /dev/null
 
-# sudo mkdir /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/
-# sudo mkdir /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/plugins
-# sudo cp -r /home/zsd/sqlite-database-integration /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/plugins/
-# sudo cp /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/plugins/sqlite-database-integration/db.copy /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/db.php
-# sudo sed -i "s+{SQLITE_IMPLEMENTATION_FOLDER_PATH}+/var/www/html/wp-content/plugins/sqlite-database-integration+g" /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/db.php
-# sudo sed -i "s+{SQLITE_PLUGIN}+sqlite-database-integration/load.php+g" /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/db.php
-# sudo mkdir /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/database
-# sudo touch /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/database/.ht.sqlite
-# sudo chown -R www-data:www-data /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/database
-# sudo chmod -R 644 /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/database
-# sudo chmod 766 /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/database
-# sudo echo 'DENY FROM ALL' | sudo tee /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-content/database/.htaccess > /dev/null
 
-
-# sudo cp /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-config-sample.php /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/wp-config.php
+# sudo cp /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-config-sample.php /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/wp-config.php
 # sudo sed -i '1i \
 # <?php \
 # putenv("WORDPRESS_DB_HOST=localhost"); \
 # putenv("WORDPRESS_DB_USER=not-used"); \
 # putenv("WORDPRESS_DB_PASSWORD=not-used"); \
 # putenv("WORDPRESS_DB_NAME=not-used"); \
-# ?>' /mnt/nfs/zsd_server/docker/data/blog/wordpress_data/index.php
-
+# ?>' /mnt/smb_fn/zsd_server/docker/data/blog/wordpress_data/index.php
