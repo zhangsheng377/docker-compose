@@ -2,7 +2,7 @@ services:
   ollama:
     volumes:
       - ollama:/root/.ollama
-      - /mnt/nfs/zsd_server:/mnt/nfs/zsd_server
+      - /mnt/nfs_fn/zsd_server:/mnt/nfs_fn/zsd_server
     container_name: ollama
     pull_policy: always
     tty: true
@@ -32,7 +32,7 @@ services:
     container_name: open-webui
     volumes:
       - open-webui:/app/backend/data
-      - /mnt/nfs/zsd_server:/mnt/nfs/zsd_server
+      - /mnt/nfs_fn/zsd_server:/mnt/nfs_fn/zsd_server
     depends_on:
       - ollama
     ports:
